@@ -1,13 +1,16 @@
 class Table
-  X_MIN = 0
-  X_MAX = 4
-  Y_MIN = 0
-  Y_MAX = 4
-
-  def initialize()
+  
+  attr_reader :X_MIN, :Y_MIN
+  attr_accessor :x_max, :y_max
+  
+  def initialize(x, y)
+    @x_max = x - 1
+    @y_max = y - 1
+    @X_MIN = 0
+    @Y_MIN = 0
   end
 
   def valid_move?(x, y)
-    x.between?(X_MIN, X_MAX) && y.between?(Y_MIN, Y_MAX)
+    x.between?(@X_MIN, @x_max) && y.between?(@Y_MIN, @y_max)
   end
 end

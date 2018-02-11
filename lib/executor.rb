@@ -2,7 +2,7 @@ class Executor
   attr_reader :robot, :compass
 
   def initialize()
-    @table = Table.new()
+    @table = Table.new(5,5)
     @placed = false
   end
   
