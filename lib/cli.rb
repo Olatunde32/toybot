@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class CLI
   attr_reader :executor
 
   def initialize
-    @executor = Executor.new()
+    @executor = Executor.new
   end
 
   def load_commands(commands_file)
