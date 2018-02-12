@@ -1,51 +1,45 @@
 class Executor
-  attr_reader :robot, :compass
+  attr_reader :robot, :compass, :placed, :table
 
-  def initialize()
-    @table = Table.new(5,5)
+  def initialize(table=Table.new(5,5))
+    @table = table
     @placed = false
+  end
+
+  def valid_move?(x,y)
+    @table.valid_move?(x, y)
   end
   
   def place(x, y, face)
-    if @table.valid_move?(x, y)
+    if valid_move?(x,y)
       @robot = Robot.new(x, y, face)
       @compass = Compass.new(face)  
       @placed = true 
     else
-      p "Place error..."
+      Error.place
     end
   end
 
   def left
-    if @placed
-      @compass.turn_left(@robot.face)
-      @robot.update_face(@compass.angle)
-    else
-      p "Turn left error..."
-    end
+      @placed && @compass.turn_left(@robot.face) ? @robot.update_face(@compass.angle) : Error.left
   end
 
   def right
-    if @placed
-      @compass.turn_right(@robot.face)
-      @robot.update_face(@compass.angle)
-    else
-      p "Turn right error..."
-    end
+      @placed && @compass.turn_right(@robot.face) ? @robot.update_face(@compass.angle) : Error.right 
   end
 
   def move
     unless !@placed
       steps = Mover.propose_move(@robot.x,@robot.y,@robot.face)
-      @table.valid_move?(steps[0], steps[1]) ? @robot.update(steps[0],steps[1], @robot.face) : (puts "Move error...")
+      @table.valid_move?(steps[0], steps[1]) ? @robot.update(steps[0],steps[1], @robot.face) : Error.move
     end
   end
 
   def report
-    if @placed
-      p "Output: #{@robot.x},#{@robot.y},#{@robot.face}"
-    else
-      p "Report error..."
+    if @placed 
+      puts "Output: #{@robot.x},#{@robot.y},#{@robot.face}"
+    else  
+      Error.report
     end
   end
 
