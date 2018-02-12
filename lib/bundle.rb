@@ -6,3 +6,4 @@ require_relative "compass"
 require_relative "robot"
 require_relative "mover"
 require_relative "error"
+

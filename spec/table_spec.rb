@@ -5,23 +5,25 @@ describe 'Table' do
     @table = Table.new(5,5)
   end
 
-  describe 'constants' do 
-    it 'creates X_MIN' do 
-      expect(@table.X_MIN).to eq(0)  
+  describe 'attributes' do 
+    describe 'allows read-only constants' do 
+      it 'X_MIN' do 
+        expect(@table.X_MIN).to eq(0)  
+      end
+
+      it 'Y_MIN' do 
+        expect(@table.Y_MIN).to eq(0)  
+      end
     end
 
-    it 'creates Y_MIN' do 
-      expect(@table.Y_MIN).to eq(0)  
-    end
-  end
+    describe 'allows read/write' do
+      it 'x limit' do 
+        expect(@table.x_max).to eq(4)
+      end
 
-  describe 'sets max dimension' do
-    it 'sets x limit' do 
-      expect(@table.x_max).to eq(4)
-    end
-
-    it 'sets y limit' do 
-      expect(@table.y_max).to eq(4)
+      it 'y limit' do 
+        expect(@table.y_max).to eq(4)
+      end
     end
   end
 

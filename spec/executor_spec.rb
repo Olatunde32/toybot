@@ -5,7 +5,7 @@ describe 'Executor' do
     @executor = Executor.new
   end
   
-  describe 'initialize' do 
+  describe 'attributes' do 
     it 'create table x-limit' do 
       expect(@executor.table.x_max).to eq(4)
     end
