@@ -35,6 +35,16 @@ LEFT
 REPORT
 ```
 
+## Run the program
+ruby main.rb commands.txt
+
+## Sample output
+Output: 0,0,NORTH
+
+## Run test
+rspec  : for all tests
+rspec spec/<name>_spec.rb    : specific spec file only
+
 ## License
 This project is licensed under MIT License. See [LICENSE.md](LICENSE.md) file for your rights and limitations.
 
